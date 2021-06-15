@@ -694,7 +694,7 @@ where
     D: BatchDatabase,
 {
     match offline_subcommand {
-        GetNewAddress => Ok(json!({"address": wallet.get_address(AddressIndex::New)?})),
+        GetNewAddress => Ok(json!({"address": wallet.get_address(AddressIndex::New)?.address})),
         ListUnspent => Ok(serde_json::to_value(&wallet.list_unspent()?)?),
         ListTransactions => Ok(serde_json::to_value(&wallet.list_transactions(false)?)?),
         GetBalance => Ok(json!({"satoshi": wallet.get_balance()?})),
